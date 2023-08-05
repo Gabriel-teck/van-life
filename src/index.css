@@ -57,8 +57,8 @@ font-weight: 600;
   
   /* home page  */
 section {
-  height: 640px;
-  background-color: #4D4D4D;
+  /* height: 640px;
+  background-color: #4D4D4D; */
 }
 
 .home-container {
@@ -110,7 +110,7 @@ font-weight: 600;
 transition: transform .1s ease-in-out;
 }
 
-footer {
+/* footer {
  display: flex;
  justify-content: center;
  padding: 3.5rem 0;
@@ -125,12 +125,12 @@ footer {
  color: rgb(195, 187, 173);
  font-size: 1.5rem;
  background-color: #4D4D4D;
-}
+} */
 
 /*** ABOUT PAGE ***/
 .image {
-  height: 400px;
-  width: 100%;
+  
+  max-width: 100%;
 } 
 
 .text-cont {

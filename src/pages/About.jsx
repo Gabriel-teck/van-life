@@ -31,14 +31,14 @@ const About = () => {
           </div>
         </div>
       </div>
-      <footer className="about-footer">
+      {/* <footer className="about-footer">
         <div>
           <p>
             <FaRegCopyright />
             2022 #VANLIFE
           </p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

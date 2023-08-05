@@ -19,14 +19,14 @@ const Home = () => {
             <Link to='/van' className="find-btn">Find your van</Link>
           </div>
         </div>
-        <footer>
+        {/* <footer>
           <div>
             <p>
               
            <span style={{fontSize:'20px'}}>&copy; </span> 2022 #VANLIFE
             </p>
           </div>
-        </footer>
+        </footer> */}
       </section>
     </>
   );
