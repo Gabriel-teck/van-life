@@ -1,0 +1,177 @@
+:root {
+  /* Darker shades color */
+  --clr-primary-1: hsl(225, 9%, 9%)
+  --clr-primary-2: hsl(130, 13%, 9%)
+  /* light shades color */
+  --footer-1: hsl(22, 55%, 86%)
+  --text-2: hsl(0, 0%, 100%)
+  --light-3: hsl(62, 100%, 95%)
+
+  --radius: 0.25rem;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: #FFF7ED;
+    font-family: "Inter", sans-serif;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* navBar styling*/
+header {
+  height: 110px;
+  display:flex;
+  align-items: center;
+  padding: 20px;
+}
+
+header .site-logo {
+  color:black;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 25px;
+  margin-right: auto;
+}
+
+nav a {
+ text-decoration: none;
+ color:#4D4D4D;
+padding: 5px 10px;
+font-weight: 600;
+}
+  
+  /* home page  */
+section {
+  height: 640px;
+  background-color: #4D4D4D;
+}
+
+.home-container {
+  background-image: url(../src/assets/image\ 54.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 510px;
+  text-align: center;
+  
+  color:white;
+}
+
+.home-container .para-1 {
+  font-size: 3.75rem;
+  line-height: 3.85rem;
+  padding-top: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.home-container .para-2 {
+  font-size: 1.5rem;
+  line-height: 1.85rem;
+  padding-top: 1.5rem;
+  font-weight: 400;
+  text-transform: capitalize;
+margin-bottom: 4.75rem;
+}
+
+.find {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgb(243, 169, 31);
+  padding:0.99rem; 
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  
+}
+
+.find-btn {
+  text-decoration: none;
+color:#FFF7ED;
+font-size: 1.5rem;
+font-weight: 600;
+transition: transform .1s ease-in-out;
+}
+
+footer {
+ display: flex;
+ justify-content: center;
+ padding: 3.5rem 0;
+ color: wheat;
+ font-size: 1.5rem;
+}
+
+.about-footer {
+  display: flex;
+ justify-content: center;
+ padding: 2.5rem 0;
+ color: rgb(195, 187, 173);
+ font-size: 1.5rem;
+ background-color: #4D4D4D;
+}
+
+/*** ABOUT PAGE ***/
+.image {
+  height: 400px;
+  width: 100%;
+} 
+
+.text-cont {
+  padding:2rem 1.9rem
+}
+
+.text-cont > h1 {
+  margin-bottom: 2.45rem;
+  font-size: 3rem;
+}
+
+.about-para-1,.about-para-2 {
+  margin-bottom: 2rem;
+  font-size: 20px;
+  line-height: 1.17;
+  font-weight: 600;
+}
+
+.about-border {
+  background-color:#FFCC8D;
+  padding: 3rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.about-lnk {
+  display: inline-block;
+  background: black;
+  margin-top: 1.5rem;
+  font-size: 15px;
+  padding: 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: transform .1s ease-in-out;
+}
+
+.about-lnk > a {
+  text-decoration: none;
+  color: white;
+}
+
