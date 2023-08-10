@@ -16,7 +16,7 @@ const Home = () => {
           </p>
           <div className="find">
             
-            <Link to='/van' className="find-btn">Find your van</Link>
+            <Link to='/vans' className="find-btn">Find your van</Link>
           </div>
         </div>
         {/* <footer>
