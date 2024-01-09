@@ -176,13 +176,27 @@ footer {
 /* VANS PAGE */
 .van-list-container {
   padding-inline: 1.25rem;
-  margin-bottom: 3rem;
+}
+
+.van-list-container > h1 {
+  margin-bottom: 1rem;
+}
+
+.van-list-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.van-list-filter-buttons > a {
+  margin-right: 15px;
+  text-decoration: none;
 }
 
 .van-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  margin-top: 57px;
 }
 
 .van-title a {
@@ -224,6 +238,18 @@ footer {
   transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.van-type {
+    height: 34px;
+    padding: 6px 26px;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFEAD0;
+    color: #4D4D4D;
+    transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .van-type:hover {
   color: #ffead0;
 }
@@ -238,7 +264,7 @@ footer {
 
 .van-type.simple:hover,
 .van-type.simple.selected {
-  background-color: #e17654;
+   background-color: #E17654;
 }
 
 .van-type.rugged:hover,
@@ -249,6 +275,28 @@ footer {
 .van-type.luxury:hover,
 .van-type.luxury.selected {
   background-color: #161616;
+}
+
+.van-list-container button {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.van-type.clear-filters {
+    margin-left: -20px;
+    height: 34px;
+    padding: 6px 26px;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    text-decoration: underline;
+    background-color: transparent;
+    color: #4D4D4D;
+}
+
+i[class*='van-type-'] {
+    padding: 7px 14px;
 }
 
 /* VAN-DETAIL PAGE */
@@ -495,4 +543,28 @@ HOSTDETAILSVAN STYLING
 .host-van-detail-image {
   height: 100px;
   border-radius: 5px;
+}
+
+/* NOT FOUND PAGE */
+.not-found-container {
+    padding-inline: 26px;
+}
+
+.not-found-container .link-button {
+    width: 100%;
+    background-color: #161616;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    border:1px solid black;
+    border-radius: 0.8rem;
+}
+
+.not-found-container .link-button:hover {
+  background-color: #cc481f;
+  color: #fff7ed;
+  border: none;
 }

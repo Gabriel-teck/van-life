@@ -1,10 +1,19 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 // import {Link} from 'react-router-dom'
 
 const VanDetail = () => {
   const params = useParams();
+  const location = useLocation();
+  console.log(location);
+
+  //we make use of OPTIONAL CHAINING in vanila js
+  const search = location.state?.search || "";
+
+  //optional chaining to make the back to all vans use a specified filtered type
+  const type = location.state?.type || "all";
+
   const [van, setVan] = useState(null);
 
   const getVan = async () => {
@@ -28,6 +37,9 @@ const VanDetail = () => {
   return (
     <>
       <section className="detail-container">
+        <Link to={`..${search}`} relative="path" className="back-button">
+          &larr; <span>Back to {type} vans</span>
+        </Link>
         {van ? (
           <div className="van-detail">
             <img src={van.imageUrl} alt={van.name} />

@@ -26,8 +26,7 @@ const HostVanDetails = () => {
   return (
     <section>
       <Link to=".." relative="path" className="back-button">
-        <span className="span-back">&larr;</span>
-        <span className="span-text">Back to all vans</span>
+        &larr; <span>Back to all vans</span>
       </Link>
       <aside className="hostdetails-container">
         <div className="hostdetails-list">
@@ -47,25 +46,25 @@ const HostVanDetails = () => {
           <NavLink
             to="."
             end
-            style={({isActive}) => (isActive ? activeStyles : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             details
           </NavLink>
           <NavLink
             to="pricing"
-            style={({isActive}) => (isActive ? activeStyles : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             pricing
           </NavLink>
           <NavLink
             to="photos"
-            style={({isActive}) => (isActive ? activeStyles : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             photos
           </NavLink>
         </nav>
 
-        <Outlet context={{currentVan}}/>
+        <Outlet context={{ currentVan }} />
       </aside>
     </section>
   );

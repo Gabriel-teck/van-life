@@ -16,13 +16,14 @@ import HostVanDetails from "./pages/host/HostVanDetails";
 import HostVaninfo from "./pages/host/HostVaninfo";
 import HostVanpricing from "./pages/host/HostVanpricing";
 import HostVanphotos from "./pages/host/HostVanphotos";
+import NotFound from "./pages/NotFound";
 import "./server";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<Layout />}> 
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
@@ -40,10 +41,11 @@ function App() {
               <Route path='photos' element={<HostVanphotos />} />
             </Route>
           </Route>
+          <Route path="*" element={< NotFound/>} />
         </Route>
       </Routes>
     </BrowserRouter>
-  );
+  );  
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);

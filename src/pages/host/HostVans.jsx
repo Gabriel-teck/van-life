@@ -19,7 +19,7 @@ const HostVans = () => {
     const { name, id, price, imageUrl } = van;
     return (
       <Link
-        to={`/host/vans/${van.id}`}
+        to={van.id}
         className="host-van-link-wrapper"
         key={id}
       >
