@@ -1,24 +1,48 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
 
-const url = "/api/vans";
+// const url = "/api/vans";
+
+export const loader = () => {
+  return getVans()
+};
 
 const Vans = () => {
+  //making use of a useLoaderData hook instead of useEffect
+  const vans = useLoaderData();
+
+   const [error, setError] = useState(null);
+
   //setting up a useState hook
-  const [vans, setVans] = useState([]);
+  // const [vans, setVans] = useState([]);
+  // const [loading, setLoading] = useState(false);
+ 
 
   //useEffect hook
-  const getData = async () => {
-    const response = await fetch(url);
-    const { vans } = await response.json();
-    setVans(vans);
-    console.log("my data", vans);
-  };
+  // const getData = async () => {
+  //   const response = await fetch(url);
+  //   const { vans } = await response.json();
+  //   setVans(vans);
+  //   console.log("my data", vans);
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  //calling the useEffect from a seperate file
+  // useEffect(() => {
+  //   const loadVans = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const data = await getVans();
+  //       setVans(data);
+  //     } catch (error) {
+  //       setError(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   loadVans();
+  // }, []);
 
   //setting up a search/query parameter
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,6 +54,14 @@ const Vans = () => {
   const displayedVans = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
     : vans;
+
+  // if (loading) {
+  //   return <h1>Loading....</h1>;
+  // }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
+  }
 
   return (
     <>
