@@ -1,17 +1,25 @@
 import React from "react";
-import { useParams, Link, Outlet, NavLink } from "react-router-dom";
+import { useParams, Link, Outlet, NavLink,useLoaderData } from "react-router-dom";
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
+
+export const loader = async ({params,request}) => {
+  await requireAuth(request)
+  return getHostVans(params.id)
+}
 
 const HostVanDetails = () => {
-  const param = useParams();
+  const currentVan = useLoaderData();
+  // const param = useParams();
   // OR I CAN DESTRUCTURE IT AND SAY I ONLY CARE ABOUT THE ID PROP {id}
   // const {id} = useParams();
-  const [currentVan, setCurrentVan] = React.useState(false);
+  // const [currentVan, setCurrentVan] = React.useState(false);
 
-  React.useEffect(() => {
-    fetch(`/api/host/vans/${param.id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans));
-  }, []);
+  // React.useEffect(() => {
+  //   fetch(`/api/host/vans/${param.id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setCurrentVan(data.vans));
+  // }, []);
 
   const activeStyles = {
     fontWeight: "bold",

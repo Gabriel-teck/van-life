@@ -1,24 +1,29 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useLoaderData,
+  defer,
+  Await,
+} from "react-router-dom";
 import { getVans } from "../../api";
 
 // const url = "/api/vans";
 
-export const loader = () => {
-  return getVans()
+export const loader = async () => {
+  const vansPromise = getVans();
+  return defer({ vans: vansPromise });
 };
 
 const Vans = () => {
   //making use of a useLoaderData hook instead of useEffect
-  const vans = useLoaderData();
-
-   const [error, setError] = useState(null);
+  const dataPromise = useLoaderData();
 
   //setting up a useState hook
+  // const [error, setError] = useState(null);
   // const [vans, setVans] = useState([]);
   // const [loading, setLoading] = useState(false);
- 
 
   //useEffect hook
   // const getData = async () => {
@@ -51,22 +56,21 @@ const Vans = () => {
   //console.log(typeFilter);
   console.log(searchParams.toString());
 
-  const displayedVans = typeFilter
-    ? vans.filter((van) => van.type === typeFilter)
-    : vans;
-
   // if (loading) {
   //   return <h1>Loading....</h1>;
   // }
 
-  if (error) {
-    return <h1>There was an error: {error.message}</h1>;
-  }
+  // if (error) {
+  //   return <h1>There was an error: {error.message}</h1>;
+  // }
 
-  return (
-    <>
-      <article className="van-list-container">
-        <h1>Explore our van options</h1>
+  const renderVanElement = (vans) => {
+    const displayedVans = typeFilter
+      ? vans.filter((van) => van.type === typeFilter)
+      : vans;
+
+    return (
+      <>
         <div className="van-list-filter-buttons">
           <button
             className={`van-type simple ${
@@ -114,7 +118,7 @@ const Vans = () => {
                     type: typeFilter,
                   }}
                   aria-label={`view details for ${van.name},
-                priced at $${van.price} per day`}
+                                      priced at $${van.price} per day`}
                 >
                   <img className="van-img" src={imageUrl} alt={name} />
                   <div className="van-info">
@@ -130,6 +134,18 @@ const Vans = () => {
             );
           })}
         </div>
+        ;
+      </>
+    );
+  };
+
+  return (
+    <>
+      <article className="van-list-container">
+        <h1>Explore our van options</h1>
+        <Suspense fallback={<div className="loader"></div>}>
+          <Await resolve={dataPromise.vans}>{renderVanElement}</Await>
+        </Suspense>
       </article>
     </>
   );

@@ -3,6 +3,9 @@ import loginPhoto from "../assets/avatar-icon.webp"
 import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
+  const fakeLogOut = () => {
+    localStorage.removeItem("loggedin")
+  }
   return (
     <header>
       <Link to="/" className="site-logo">
@@ -10,19 +13,19 @@ const Header = () => {
       </Link>
       <nav className="header-nav">
         <NavLink
-          to="/host"
+          to="host"
           className={({ isActive }) => (isActive ? "currentlyActive" : null)}
         >
           Host
         </NavLink>
         <NavLink
-          to="/about"
+          to="about"
           className={({ isActive }) => (isActive ? "currentlyActive" : null)}
         >
           About
         </NavLink>
         <NavLink
-          to="/vans"
+          to="vans"
           className={({ isActive }) => (isActive ? "currentlyActive" : null)}
         >
           Van
@@ -31,6 +34,7 @@ const Header = () => {
           <img src={loginPhoto} 
           className="login-icon" />
         </Link>
+        <button onClick={fakeLogOut}>X</button>
       </nav>
     </header>
   );
