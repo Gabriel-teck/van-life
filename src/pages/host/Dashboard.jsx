@@ -20,7 +20,7 @@ export default function Dashboard() {
     const getVan = vans.map((van) => {
       const { name, id, price, imageUrl } = van;
       return (
-        <Link to={`/vans/${van.id}`} className="host-van-link-wrapper" key={id}>
+        <Link to={`vans/${van.id}`} className="host-van-link-wrapper" key={id}>
           <div key={id} className="hostVan-list">
             <img src={imageUrl} alt={`Photo of ${name}`} />
             <div className="hostvan-info">

@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams, Link, useLocation, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getVans } from "../../api";
+import { getVan } from "../../api";
 // import {Link} from 'react-router-dom'
 
 export const loader = async ({ params }) => {
-  return getVans(params.id);
+  return getVan(params.id);
 };
 
 const VanDetail = () => {

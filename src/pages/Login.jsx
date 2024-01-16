@@ -8,6 +8,7 @@ import {
   useActionData,
 } from "react-router-dom";
 import { loginUser } from "../api";
+// import {auth} from "../api"
 
 export const loader = ({ request }) => {
   return new URL(request.url).searchParams.get("message");
@@ -21,10 +22,13 @@ export const action = async ({ request }) => {
     new URL(request.url).searchParams.get("redirectTo") || "/host";
   try {
     const data = await loginUser({ email, password });
-    localStorage.setItem("loggedin", true);
-    const redirectDes = redirect(pathname);
-    redirectDes.body = true;
-    return redirectDes;
+    if (data) {
+      localStorage.setItem("loggedin", true);
+      const redirectDes = redirect(pathname);
+      redirectDes.body = true;
+      return redirectDes;
+    }
+    return null
   } catch (err) {
     return err.message;
   }
