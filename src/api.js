@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import {
   getFirestore,
   collection,
@@ -8,7 +13,9 @@ import {
   getDoc,
   query,
   where,
+  setDoc,
 } from "firebase/firestore/lite";
+import { Navigate, redirect } from "react-router-dom";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -58,24 +65,72 @@ export const getHostVans = async () => {
 
 //Authentication config
 
-export const loginUser = async ({email,password}) => {
+export const loginUser = async ({ email, password }) => {
   try {
     const auth = getAuth(app);
-    console.log("auth error", auth);
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
     const user = userCredential.user;
-    console.log(user);
+    const docRef = doc(db, "user", user.uid);
+    const docSnap = await getDoc(docRef);
+    return docSnap;
   } catch (error) {
-    console.log("error gotten", error)
+    console.log("error gotten", error);
   }
-  
-  
-  // return user;
+  return null;
 };
+
+export const signOutUser = () => {
+  console.log("logging out");
+  const auth = getAuth(app);
+  signOut(auth)
+    .then(() => {
+      console.log("show");
+      localStorage.removeItem("user");
+      redirect("login");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// export const signupUser = async ({ firstname, lastname, email, password }) => {
+//   try {
+//     const auth = getAuth(app);
+//     const userCredential = await createUserWithEmailAndPassword(
+//       auth,
+//       firstname,
+//       lastname,
+//       email,
+//       password
+//     );
+//     const user = userCredential.user;
+//     await setDoc(doc(db, `user/${user.uid}`), {
+//       firstname,
+//       lastname,
+//       email,
+//       password,
+//     });
+//     localStorage.setItem(
+//       "user",
+//       JSON.stringify({ firstname, lastname, email })
+//     );
+//     return redirect("/host");
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   return null;
+// };
+
+// if (docSnap.exists()) {
+//   localStorage.setItem("user", JSON.stringify({ email }));
+//   return redirect("/host");
+// } else {
+//   console.log("no such document here");
+// }
 
 // export const getVans = async (id) => {
 //   const url = id ? `/api/vans/${id}` : "/api/vans";

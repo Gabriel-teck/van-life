@@ -16,6 +16,9 @@ export async function loader({ request }) {
 export default function Dashboard() {
   const loaderData = useLoaderData();
 
+  const user = localStorage.getItem("user");
+  const objUser = JSON.parse(user);
+
   const renderVanElements = (vans) => {
     const getVan = vans.map((van) => {
       const { name, id, price, imageUrl } = van;
@@ -38,7 +41,7 @@ export default function Dashboard() {
     <>
       <section className="host-dashboard-earnings">
         <div className="info">
-          <h1>Welcome!</h1>
+          <h1>Welcome {objUser.firstname}</h1>
           <p>
             Income last <span>30 days</span>
           </p>

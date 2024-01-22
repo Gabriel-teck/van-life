@@ -18,7 +18,7 @@ import {
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail";
 import Layout from "./components/Layout";
-import Dashboard, {loader as dashboardLoader} from "./pages/host/Dashboard";
+import Dashboard, { loader as dashboardLoader } from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
 import HostLayout from "./components/HostLayout";
@@ -32,8 +32,10 @@ import HostVanphotos from "./pages/host/HostVanphotos";
 import NotFound from "./pages/NotFound";
 import { Error } from "./components/Error";
 import { requireAuth } from "./utils";
+import Signup, { action as signupAction } from "./Signup";
 
 import "./server";
+import { action } from "./Signup";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +48,7 @@ const router = createBrowserRouter(
         loader={loginLoader}
         action={loginAction}
       />
+      <Route path="signup" element={<Signup />} action={signupAction} />
       <Route
         path="vans"
         element={<Vans />}
@@ -60,11 +63,7 @@ const router = createBrowserRouter(
       />
 
       <Route path="host" element={<HostLayout />}>
-        <Route
-          index
-          element={<Dashboard />}
-          loader={dashboardLoader}
-        />
+        <Route index element={<Dashboard />} loader={dashboardLoader} />
         <Route
           path="income"
           element={<Income />}

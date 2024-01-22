@@ -1,11 +1,11 @@
 import React from "react";
-import loginPhoto from "../assets/avatar-icon.webp"
+import { CiLogout } from "react-icons/ci";
+import { FaCircleUser } from "react-icons/fa6";
+import loginPhoto from "../assets/avatar-icon.webp";
 import { NavLink, Link } from "react-router-dom";
+import { signOutUser } from "../api";
 
 const Header = () => {
-  const fakeLogOut = () => {
-    localStorage.removeItem("loggedin")
-  }
   return (
     <header>
       <Link to="/" className="site-logo">
@@ -31,10 +31,11 @@ const Header = () => {
           Van
         </NavLink>
         <Link to="login" className="login-link">
-          <img src={loginPhoto} 
-          className="login-icon" />
+          <FaCircleUser className="login-icon" />
         </Link>
-        <button onClick={fakeLogOut}>X</button>
+        <Link to="login" onClick={signOutUser} className="login-link">
+          <CiLogout className="login-icon" />
+        </Link>
       </nav>
     </header>
   );

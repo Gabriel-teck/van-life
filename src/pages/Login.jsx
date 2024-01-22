@@ -6,6 +6,7 @@ import {
   useNavigate,
   redirect,
   useActionData,
+  Link,
 } from "react-router-dom";
 import { loginUser } from "../api";
 // import {auth} from "../api"
@@ -22,13 +23,14 @@ export const action = async ({ request }) => {
     new URL(request.url).searchParams.get("redirectTo") || "/host";
   try {
     const data = await loginUser({ email, password });
-    if (data) {
-      localStorage.setItem("loggedin", true);
-      const redirectDes = redirect(pathname);
-      redirectDes.body = true;
-      return redirectDes;
+    if (data.exists()) {
+      const obj = { email: email }
+      localStorage.setItem("user", JSON.stringify(obj));
+      return redirect(pathname);
+    } else {
+      console.log("no such document here");
     }
-    return null
+    return null;
   } catch (err) {
     return err.message;
   }
@@ -89,6 +91,11 @@ export const Login = () => {
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>
+      <div>
+        <p>
+          Don't have an account<Link to="/signup">Sign up</Link>
+        </p>
+      </div>
     </div>
   );
 };
