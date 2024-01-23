@@ -74,7 +74,7 @@ export const loginUser = async ({ email, password }) => {
       password
     );
     const user = userCredential.user;
-    const docRef = doc(db, "user", user.uid);
+    const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     return docSnap;
   } catch (error) {
@@ -84,11 +84,9 @@ export const loginUser = async ({ email, password }) => {
 };
 
 export const signOutUser = () => {
-  console.log("logging out");
   const auth = getAuth(app);
   signOut(auth)
     .then(() => {
-      console.log("show");
       localStorage.removeItem("user");
       redirect("login");
     })

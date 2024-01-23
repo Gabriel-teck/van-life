@@ -24,8 +24,14 @@ export const action = async ({ request }) => {
   try {
     const data = await loginUser({ email, password });
     if (data.exists()) {
-      const obj = { email: email }
-      localStorage.setItem("user", JSON.stringify(obj));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          firstname: data.data().firstname,
+          lastname: data.data().lastname,
+          email: data.data().email,
+        })
+      );
       return redirect(pathname);
     } else {
       console.log("no such document here");
@@ -38,7 +44,9 @@ export const action = async ({ request }) => {
 
 export const Login = () => {
   const message = useLoaderData();
+  console.log("gane", message);
   const errorMessage = useActionData();
+  console.log("err", errorMessage);
   const navigation = useNavigation();
 
   //   const [loginFormData, setLoginFormData] = React.useState({
@@ -91,9 +99,9 @@ export const Login = () => {
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>
-      <div>
+      <div className="acct-text">
         <p>
-          Don't have an account<Link to="/signup">Sign up</Link>
+          Don't have an account <Link to="/signup">Sign up here</Link>
         </p>
       </div>
     </div>

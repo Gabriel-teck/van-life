@@ -627,6 +627,8 @@ HOSTDETAILSVAN STYLING
   outline: none;
 }
 
+
+
 /* .signup-form > input:first-of-type {
   border-radius: 6px 6px 0px 0px;
 }
@@ -652,7 +654,20 @@ HOSTDETAILSVAN STYLING
 }
 
 
+.acct-text {
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  color: #115e59;
+}
 
+.acct-text a {
+  text-decoration: none;
+}
+
+.acct-text a:hover {
+  text-decoration: underline;
+  font-size: 1rem;  
+}
 
 
 .login-form > input:focus {
