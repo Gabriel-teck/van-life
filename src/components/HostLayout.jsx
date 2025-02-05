@@ -3,10 +3,10 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const HostLayout = () => {
   const activeStyles = {
-    fontWeight:'bold',
-    textDecoration:'underline',
-    color:'#161616'
-  }
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616",
+  };
   return (
     <>
       <nav className="host-nav">
@@ -35,7 +35,6 @@ const HostLayout = () => {
         >
           Reviews
         </NavLink>
-
       </nav>
       <Outlet />
     </>

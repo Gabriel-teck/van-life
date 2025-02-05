@@ -6,10 +6,14 @@
   padding: 0;
 }
 
+/* changes made */
 html,
 body {
   background-color: #fff7ed;
   font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -69,10 +73,17 @@ a.currentlyActive {
 }
 
 .site-wrapper {
-  min-height: 100vh;
+flex:1;
+display: flex;
+flex-direction: column;
+
+
+
+  /* min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
 }
+
 
 /* home page  */
 .home-container {
@@ -133,6 +144,9 @@ footer {
   align-items: center;
   margin-top: auto;
   font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 /*** ABOUT PAGE ***/
@@ -918,5 +932,102 @@ margin-right: auto;
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+
+
+/* Responsive Design */
+/* @media screen and (max-width: 768px) {
+  header {
+    flex-direction: row;
+    height: auto;
+    padding: 10px;
+  }
+
+  .header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-container .para-1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .home-container .para-2 {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .find {
+    width: 80%;
+  }
+
+  .van-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+} */
+
+/* @media screen and (max-width: 480px) {
+  header .site-logo {
+    font-size: 20px;
+  }
+
+  .home-container {
+    min-height: 400px;
+  }
+
+  .home-container .para-1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .home-container .para-2 {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+
+  .find {
+    width: 90%;
+    padding: 0.75rem;
+  }
+
+  footer {
+    height: 60px;
+    font-size: 0.875rem;
+   
+  }
+} */
+
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .header-nav.active {
+    display: flex;
   }
 }

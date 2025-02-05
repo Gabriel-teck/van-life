@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { getVans } from "../../api";
 
-// const url = "/api/vans";
 
 export const loader = async () => {
   const vansPromise = getVans();
@@ -20,49 +19,14 @@ const Vans = () => {
   //making use of a useLoaderData hook instead of useEffect
   const dataPromise = useLoaderData();
 
-  //setting up a useState hook
-  // const [error, setError] = useState(null);
-  // const [vans, setVans] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
-  //useEffect hook
-  // const getData = async () => {
-  //   const response = await fetch(url);
-  //   const { vans } = await response.json();
-  //   setVans(vans);
-  //   console.log("my data", vans);
-  // };
-
-  //calling the useEffect from a seperate file
-  // useEffect(() => {
-  //   const loadVans = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const data = await getVans();
-  //       setVans(data);
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   loadVans();
-  // }, []);
 
   //setting up a search/query parameter
   const [searchParams, setSearchParams] = useSearchParams();
 
   const typeFilter = searchParams.get("type");
-  //console.log(typeFilter);
   console.log(searchParams.toString());
 
-  // if (loading) {
-  //   return <h1>Loading....</h1>;
-  // }
 
-  // if (error) {
-  //   return <h1>There was an error: {error.message}</h1>;
-  // }
 
   const renderVanElement = (vans) => {
     const displayedVans = typeFilter
@@ -153,32 +117,4 @@ const Vans = () => {
 
 export default Vans;
 
-// export default function Vans() {
-//   const [vans, setVans] = React.useState([]);
-//   React.useEffect(() => {
-//     fetch("/api/vans")
-//       .then((res) => res.json())
-//       .then((data) => setVans(data.vans));
-//   }, []);
 
-//   const vanElement = vans.map((van) => (
-//     <div key={van.id} className="van-title">
-//       <img src={van.imageUrl} />
-//       <div className="van-info">
-//         <h2>{van.name}</h2>
-//         <h2>
-//           ${van.price}
-//           <span className="price-day">/day</span>
-//         </h2>
-//       </div>
-//       <i className={`van-type ${van.type} selected`}>{van.type}</i>
-//     </div>
-//   ));
-
-//   return (
-//     <div className="van-list-container">
-//       <h1>Explore our van options</h1>
-//       <div className="van-list">{vanElement}</div>
-//     </div>
-//   );
-// }

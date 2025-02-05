@@ -10,16 +10,7 @@ export const loader = async ({params,request}) => {
 
 const HostVanDetails = () => {
   const currentVan = useLoaderData();
-  // const param = useParams();
-  // OR I CAN DESTRUCTURE IT AND SAY I ONLY CARE ABOUT THE ID PROP {id}
-  // const {id} = useParams();
-  // const [currentVan, setCurrentVan] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   fetch(`/api/host/vans/${param.id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setCurrentVan(data.vans));
-  // }, []);
 
   const activeStyles = {
     fontWeight: "bold",

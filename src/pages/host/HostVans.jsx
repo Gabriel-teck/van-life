@@ -11,18 +11,7 @@ export const loader = async ({ request }) => {
 
 const HostVans = () => {
   const dataPromise = useLoaderData();
-  // const [vans, setVans] = React.useState([]);
-
-  // const getApi = async () => {
-  //   const res = await fetch("/api/host/vans");
-  //   const { vans } = await res.json();
-  //   setVans(vans);
-  //   console.log("api call", vans);
-  // };
-
-  // React.useEffect(() => {
-  //   getApi();
-  // }, []);
+  
 
   const renderVanElements = (vans) => {
 

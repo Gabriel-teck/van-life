@@ -1,15 +1,12 @@
 import React from "react";
-import { useParams, Link, useLocation, useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
 import { getVan } from "../../api";
-// import {Link} from 'react-router-dom'
 
 export const loader = async ({ params }) => {
   return getVan(params.id);
 };
 
 const VanDetail = () => {
-  // const params = useParams();
   const location = useLocation();
   // console.log(location);
   const van = useLoaderData();
@@ -20,25 +17,7 @@ const VanDetail = () => {
   //optional chaining to make the back to all vans use a specified filtered type
   const type = location.state?.type || "all";
 
-  // const [van, setVan] = useState(null);
-
-  // const getVan = async () => {
-  //   const res = await fetch(`/api/vans/${params.id}`);
-  //   const van = await res.json();
-  //   //we have to pass in the previous vans i.e van.vans
-  //   setVan(van.vans);
-  //   console.log("van data", van);
-  // };
-
-  // useEffect(() => {
-  //   getVan();
-  // }, [params.id]);
-
-  //   useEffect(()=>{
-  //       fetch(`/api/vans/${params.id}`)
-  //       .then(res => res.json())
-  //       .then(data => setVan(data.vans))
-  //   },[params.id])
+ 
 
   return (
     <>
